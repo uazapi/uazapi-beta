@@ -36,7 +36,7 @@ sudo apt update && sudo apt upgrade -y && sudo apt dist-upgrade -y && sudo apt i
 sudo apt-get install ffmpeg -y
 ```
 
-2.2- Instalar Redis para tentar não dar erro no envio
+2.2- Instalar Redis para evitar erros nos envios de mensagens
 
 ```bash
 sudo apt-get install redis-server -y
@@ -193,7 +193,7 @@ git fetch && git reset --hard && git pull && npm install --unsafe-perm
 sudo apt-get install ffmpeg -y
 ```
 
-# Instalar Redis para tentar não dar erro no envio
+# Instalar Redis para evitar erros nos envios de mensagens
 
 ```bash
 sudo apt-get install redis-server -y
