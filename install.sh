@@ -48,6 +48,9 @@ sudo apt autoclean
 # Mensagem de status
 echo -e "\e[7mConfigurando o fuso horário...\e[0m"
 
+# Configura o fuso horário
+sudo timedatectl set-timezone America/Sao_Paulo
+
 
 # Verifica se o Redis já foi instalado
 if ! command -v redis-server &> /dev/null; then
@@ -64,8 +67,7 @@ else
   echo -e "\e[7mRedis já está instalado, pulando para próxima etapa...\e[0m"
 fi
 
-# Configura o fuso horário
-sudo timedatectl set-timezone America/Sao_Paulo
+
 
  # Verifica se o FFmpeg está instalado
   if ! command -v ffmpeg &> /dev/null; then
