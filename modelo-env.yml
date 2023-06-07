@@ -14,6 +14,13 @@
 
 
 
+# para desabilitar o auto update, marque como false, 
+
+AUTOUPDATE: true # false
+
+# para desabilitar o update ao reiniciar a api edite o package.json, removendo o script "prestart"
+
+
 
 
 AUTHENTICATION:
@@ -141,7 +148,10 @@ DATABASE:
 
 
 
-
+REDIS:
+  ENABLED: true
+  URI: redis://127.0.0.1:6379
+  PREFIX_KEY: uazapi
 
 
 
