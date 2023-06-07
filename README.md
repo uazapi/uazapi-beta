@@ -18,7 +18,7 @@ sudo su
 ```
 
 ```bash
-bash <(curl -s https://raw.githubusercontent.com/uazapi/uazapi/main/install.sh)
+bash <(curl -s https://raw.githubusercontent.com/uazapi/uazapi-beta/main/install.sh)
 ```
 
     
