@@ -129,12 +129,15 @@ npm i
 ```
 10- instalar mongodb via docker 
 
-  Verifique que no arquivo docker-compose-mongodb.yaml está setado uma senha para o mongo igual ao env-rename, caso queira trocar a senha, troque antes do comando abaixo, e não esqueça de trocar no arquivo .env) - caso dê erro de permissão na hora de editar rode o comando "sudo chmod -R 777 /home/ubuntu/uazapi".
+```bash
+cd mongodb
+```
 
 ```bash
 docker-compose up -d
 ```
-11- renomear arquivo dev-env.yml para env.yml e editá-lo conforme suas necessidades, principalmente trocando a senha global, caso dê erro na hora de editar o arquivo, execute o comando:
+
+11- renomear arquivo modelo-env.yml para env.yml e editá-lo conforme suas necessidades, principalmente trocando a senha global, caso dê erro na hora de editar o arquivo, execute o comando:
 ```bash
 chmod -R 777 /home/ubuntu/uazapi-beta
 ```
