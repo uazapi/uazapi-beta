@@ -30,7 +30,19 @@ bash <(curl -s https://raw.githubusercontent.com/uazapi/uazapi-beta/main/install
 sudo apt update && sudo apt upgrade -y && sudo apt dist-upgrade -y && sudo apt install -y curl && reboot
 ```
 
-2- habilitar o firewall, e liberar as porta 22, 80, 8080 e 443;
+2.1- Instalar dependência especial para ajustar envio de audio
+
+```bash
+sudo apt-get install ffmpeg -y
+```
+
+2.2- Instalar Redis para tentar não dar erro no envio
+
+```bash
+sudo apt-get install redis-server -y
+```
+
+2.3- habilitar o firewall, e liberar as porta 22, 80, 8080 e 443;
 
 ```bash
 sudo su
@@ -105,12 +117,12 @@ apt-get install docker-compose
 8- clonar esse repositório;
 
 ```bash
-git clone https://github.com/uazapi/uazapi.git
+git clone https://github.com/uazapi/uazapi-beta.git
 ```
 
 9- instalar dependencias do repositório;
 ```bash
-cd uazapi
+cd uazapi-beta
 ```
 ```bash
 npm i
@@ -124,7 +136,7 @@ docker-compose up -d
 ```
 11- renomear arquivo dev-env.yml para env.yml e editá-lo conforme suas necessidades, principalmente trocando a senha global, caso dê erro na hora de editar o arquivo, execute o comando:
 ```bash
-chmod -R 777 /home/ubuntu/uazapi
+chmod -R 777 /home/ubuntu/uazapi-beta
 ```
 ## Deploy
 
