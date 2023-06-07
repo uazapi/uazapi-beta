@@ -13,7 +13,7 @@ echo -e "\e[7mHabilitando firewall UFW...\e[0m"
 
 
 # Ativa o firewall UFW e configura as regras de porta
-sudo ufw enable
+echo "y" | sudo ufw enable
 sudo ufw allow 22/tcp
 sudo ufw allow 80/tcp
 sudo ufw allow 8080/tcp
@@ -133,11 +133,11 @@ fi
 echo -e "\e[7mClonando repositório do aplicativo...\e[0m"
 
 # Verifica se o repositório já foi clonado
-if [ ! -d "uazapi" ]; then
+if [ ! -d "uazapi-beta" ]; then
   sudo git clone https://github.com/uazapi/uazapi-beta.git
   cd uazapi-beta
   chmod -R 777 .
-  mv dev-env.yml env.yml
+  mv modelo-env.yml env.yml
  
 
   # Verifica se o comando anterior foi executado corretamente
@@ -196,7 +196,7 @@ fi
 #Mensagem de conclusão
 echo -e "\e[7mInstalação concluída com sucesso!\e[0m"
 echo -e "\e[7mA sua global apikey está dentro do arquivo env.yml,\e[0m"
-echo -e "\e[7mAconselhamos modifica-la, use um gerador de senha aleatória, sem caracteres especiais, com tamanho de 30 a 40 caracteres,\e[0m"
+echo -e "\e[7mAconselhamos modifica-la, use um gerador de senha aleatória, sem caracteres especiais, com tamanho de 40 a 50 caracteres,\e[0m"
 echo -e "\e[7mapós modificar a sua global api key, você precisa reiniciar a API pelo PM2, para isso, execute o seguinte comando:\e[0m"
 echo -e "\e[7mpm2 restart uazapi\e[0m"
 
