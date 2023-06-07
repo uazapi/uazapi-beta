@@ -207,7 +207,7 @@ sudo chown -R $USER:$(id -gn $USER) $CURRENT_DIR/uazapi
 if sudo pm2 list | grep -q uazapi; then
   echo -e "\e[7mO processo uazapi já está em execução no PM2\e[0m"
 else
-  sudo pm2 start 'npm run start' --name uazapi
+  sudo pm2 start 'npm run start' --name uazapi-beta
   sudo pm2 startup
   sudo pm2 save
 
