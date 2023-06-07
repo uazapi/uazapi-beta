@@ -1,0 +1,12 @@
+{
+	"name": "uazapi",
+	"version": "4.0.0",
+	"description": "API para WhatsApp",
+	"scripts": {
+		"prestart": "git fetch && git reset --hard && git pull && npm install --unsafe-perm",
+		"start": "node uazapi.js"
+	},
+	"dependencies": {
+		"fluent-ffmpeg": "^2.1.2"	
+	}
+}
