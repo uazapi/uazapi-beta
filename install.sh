@@ -41,10 +41,28 @@ if [ $? -ne 0 ]; then
   exit 1
 fi
 
+# Remove pacotes não necessários e limpa o cache do apt
+sudo apt autoremove -y
+sudo apt autoclean
 
 # Mensagem de status
 echo -e "\e[7mConfigurando o fuso horário...\e[0m"
 
+
+# Verifica se o Redis já foi instalado
+if ! command -v redis-server &> /dev/null; then
+  # Instala o Redis
+  echo -e "\e[7mInstalando Redis...\e[0m"
+  sudo apt install -y redis-server
+
+  # Verifica se o comando anterior foi executado corretamente
+  if [ $? -ne 0 ]; then
+    echo -e "\e[7mErro ao instalar o Redis\e[0m"
+    exit 1
+  fi
+else
+  echo -e "\e[7mRedis já está instalado, pulando para próxima etapa...\e[0m"
+fi
 
 # Configura o fuso horário
 sudo timedatectl set-timezone America/Sao_Paulo
@@ -112,12 +130,12 @@ fi
 echo -e "\e[7mInstalando Docker e Docker Compose...\e[0m"
 
 # Verifica se o Docker e Docker Compose já foram instalados
-if ! command -v docker &> /dev/null || ! command -v docker-compose &> /dev/null; then
-    # Instala o Docker e o Docker Compose
-    curl -fsSL https://get.docker.com -o get-docker.sh
-    sudo sh get-docker.sh
-    sudo usermod -aG docker ${USER}
-    sudo apt-get install -y docker-compose
+if ! command -v docker &> /dev/null && ! command -v docker-compose &> /dev/null; then
+  # Instala o Docker e o Docker Compose
+  curl -fsSL https://get.docker.com -o get-docker.sh
+  sudo sh get-docker.sh
+  sudo usermod -aG docker ${USER}
+  sudo apt-get install -y docker-compose
 
     # Verifica se o comando anterior foi executado corretamente
     if [ $? -ne 0 ]; then
@@ -130,23 +148,29 @@ fi
 
 
 # Mensagem de status
-echo -e "\e[7mClonando repositório do aplicativo...\e[0m"
+echo -e "\e[7mAtualizando ou clonando o repositório do aplicativo...\e[0m"
 
 # Verifica se o repositório já foi clonado
-if [ ! -d "uazapi-beta" ]; then
+if [ -d "uazapi-beta" ]; then
+  cd uazapi-beta
+  sudo git pull origin main
+
+  # Verifica se o comando anterior foi executado corretamente
+  if [ $? -ne 0 ]; then
+    echo -e "\e[7mErro ao atualizar o repositório do aplicativo\e[0m"
+    exit 1
+  fi
+else
   sudo git clone https://github.com/uazapi/uazapi-beta.git
   cd uazapi-beta
   chmod -R 777 .
   mv modelo-env.yml env.yml
- 
 
   # Verifica se o comando anterior foi executado corretamente
   if [ $? -ne 0 ]; then
     echo -e "\e[7mErro ao clonar repositório do aplicativo\e[0m"
     exit 1
   fi
-else
-  echo -e "\e[7mRepositório do aplicativo já clonado, pulando etapa...\e[0m"
 fi
 
 # Verifica se o container "mongodb" já está em execução
