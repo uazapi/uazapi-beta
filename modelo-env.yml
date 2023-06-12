@@ -146,8 +146,7 @@ DATABASE:
 
 
 
-# recomendamos deixar o REDIS habilitado ,
-# caso a instalação da sua api seja antes de julho/23, instale o REDIS com o comando:
+# Caso a instalação da sua api seja antes de julho/23, instale o REDIS com o comando:
 # sudo apt-get install redis-server -y
 REDIS:
   ENABLED: true
