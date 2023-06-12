@@ -15,10 +15,8 @@
 
 
 # para desabilitar o auto update, marque como false, 
-
 AUTOUPDATE: true # false
 
-# para desabilitar o update ao reiniciar a api edite o package.json, removendo o script "prestart"
 
 
 
