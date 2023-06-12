@@ -148,9 +148,8 @@ DATABASE:
 
 
 
-# REDIS é um banco super rápido que ajuda a não dar erros nos envios das mensagens,
-# recomendamos deixar habilitado,
-# caso a instalação da sua api seja antes de junho/23, instale o REDIS com o comando:
+# recomendamos deixar o REDIS habilitado ,
+# caso a instalação da sua api seja antes de julho/23, instale o REDIS com o comando:
 # sudo apt-get install redis-server -y
 REDIS:
   ENABLED: true
